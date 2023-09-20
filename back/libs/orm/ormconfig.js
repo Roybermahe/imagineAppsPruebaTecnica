@@ -1,5 +1,6 @@
 const { DataSource } = require("typeorm");
 const usuarios = require("./entities/usuarios.entity");
+const post = require("./entities/post.entity");
 
 const conn = {
     type: 'postgres',
@@ -10,7 +11,7 @@ const conn = {
     database: process.env.DB_NAME,
     synchronize: true, 
     logging: true, 
-    entities: [ usuarios ]
+    entities: [ usuarios, post ]
 }
 const db = new DataSource(conn);
 

@@ -3,14 +3,14 @@ const db = require('../../orm/ormconfig');
 const usuarios = require('../../orm/entities/usuarios.entity');
 const bcrypt = require('bcryptjs');
 const authService = {
-    verifyToken: async function verifyToken(req, res) {
+    verifyToken: async (req, res, next) => {
         const token = req.header('Authorization');
 
         if (!token) {
             return res.sendStatus(401); // Unauthorized
         }
 
-        jwt.verify(token, secretKey, (err, payload) => {
+        jwt.verify(token, process.env.JWT_CONFIG, (err, payload) => {
             if (err) {
                 return res.sendStatus(403);
             }

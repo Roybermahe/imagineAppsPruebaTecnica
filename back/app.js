@@ -8,6 +8,7 @@ var app = express();
 const prefix = (route) => '/api/'+route;
 const usuarioRoute = require('./routes/usuarios.router');
 const authRouter = require('./routes/auth/auth.router');
+const postRouter = require('./routes/post.router');
 app.use(logger('dev'));
 app.use(cors())
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 
 app.use(prefix('auth'), authRouter)
+app.use(prefix('post'), postRouter);
 app.use(prefix('usuarios'), usuarioRoute);
 
 // catch 404 and forward to error handler

@@ -1,25 +1,22 @@
 const { EntitySchema } = require("typeorm");
 
-const usuarios = new EntitySchema({
-    name: 'usuarios',
+const post = new EntitySchema({
+    name: 'post',
     columns: {
         id: {
             type: Number,
             primary: true,
             generated: 'increment',
         },
-        nombre: {
+        title: {
             type: String,
-            nullable: false
-        },
-        email: {
-            type: String,
+            length: 30,
             nullable: false,
-            unique: true
         },
-        password: {
+        message: {
             type: String,
-            nullable: false
+            length: 300,
+            nullable: false,
         },
         created_at: {
             type: Date,
@@ -31,12 +28,12 @@ const usuarios = new EntitySchema({
         }
     },
     relations: {
-        posts: {
-            target: 'post',
-            type: 'one-to-many',
-            inverseSide: 'post',
+        usuario: {
+            target: 'usuarios',
+            type: 'many-to-one',
+            inverseSide: 'usuarios',
         }
     }
 });
 
-module.exports = usuarios;
+module.exports = post;
