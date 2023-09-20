@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="content">
+    <h1 class="text-center">Easy Media</h1>
+    <h6 class="text-center" style="color: aqua;">Now, share is easy</h6>
+    <h3 class="text-center">Sign In</h3>
+    <form [formGroup]="form" (ngSubmit)="form.valid && sendSignIn()">
+ 
+        <label>Email</label><br>
+        <input class="inp" type="email" formControlName="username" />
+<hr>
+
+<small *ngIf="form.get('username')?.valid === false">Ingrese un email valido.</small>
+        <br>
+        <label>Password</label><br>
+        <input class="inp" type="password" formControlName="password"/>
+        <hr>
+        
+        <small *ngIf="form.get('password')?.valid === false">Minimo debe tener 8 caracteres.</small>
+        <br>
+        <button class="btn-gradient">Sign In</button>
+        <br>
+        <p>Don't have an account ? <a routerLink="/registration">Sign up here</a></p>
+    </form>
+</div>

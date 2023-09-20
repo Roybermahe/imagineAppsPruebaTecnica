@@ -24,10 +24,11 @@
         <label>Confirm Password</label><br>
         <input class="inp" type="password" formControlName="confirmPass"/>
         <hr>
-        <small *ngIf="form.get('confirmPass')?.valid === false">Repite la contraseña</small>
+        <small *ngIf="form.get('confirmPass')?.valid === false">Las contraseñas no coinciden</small>
         <br>
         <br>
-        <button class="btn-gradient">Sign Up</button>
+        <button [disabled]="form.invalid" class="btn-gradient">Sign Up</button>
+        <small style="width: 100%; display: block;" class="text-center" *ngIf="form.invalid">Llene todos los campos.</small>
         <br>
         <p>Already have an account ? <a routerLink="/login">Login</a></p>
     </form>
