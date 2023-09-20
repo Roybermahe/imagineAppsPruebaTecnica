@@ -1,0 +1,37 @@
+<div class="content">
+    <h1 class="text-center">Create message</h1>
+    <br>
+    <form [formGroup]="form" (ngSubmit)="form.valid && createPost()">
+        <label>Title</label><br>
+    <input type="text" formControlName="title" class="inp" placeholder="title post">
+    <p style="text-align: right;">{{form.get('title')?.value.length}}/30</p>
+    <br><br>
+    <label>Message</label><br>
+    <textarea class="inp" formControlName="message" rows="7" placeholder="Create message for share with friends"></textarea>
+    <p style="text-align: right;">{{form.get('message')?.value.length}}/300</p>
+    <br>
+    <button style="width: 25%; margin-right: 0;" type="submit" class="btn-gradient">SHARE</button>
+    </form>
+    
+    <br>
+</div>
+
+<div class="content">
+    <div class="card">
+        <div class="header">
+            {{ form.get('title')?.value || 'Your post title'}}
+        </div>
+        <div class="container" style="background: dimgray;">
+            {{form.get('message')?.value || 'Create message for share with friends'}}
+        </div>
+        <div style="display: flex;" class="footer">
+            <div class="fecha" style="width: 50%; text-align: left;">
+                {{ fecha | date: 'hh:mm a dd/MM/yyyy'}}
+            </div>
+            <div class="user" style="width: 50%; text-align: right;">
+                {{ usuario.nombre}}
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

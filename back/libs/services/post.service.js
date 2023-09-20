@@ -31,7 +31,7 @@ const postService = {
         return await db.manager.findOneOrFail(post,{ relations: ['usuario'], where:{ id }})
     },
     save: async (data) => {
-        return await db.manager.save(data);
+        return await db.manager.save(post, data);
     },
     update:  async (id, data) => {
         await db.manager.update(post, id, data);

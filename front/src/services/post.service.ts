@@ -1,33 +1,34 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import jwtDecode from "jwt-decode";
-import { BehaviorSubject, Subject, debounceTime } from "rxjs";
+import { Subject, BehaviorSubject, debounceTime } from "rxjs";
 import { environment } from "src/environment/enviroment";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 @Injectable({
     providedIn: 'root'
 })
-export class SignInService {
+export class PostService {
     private backend = environment.backend;
-    private $signin = new Subject();
+    private $post = new Subject();
+    private $postAll = new Subject();
+    private $myPost = new Subject();
     private $message = new BehaviorSubject('');
     constructor(
         private http: HttpClient,
         private router: Router
     ) {
-        this.$signin.pipe(
+        this.$post.pipe(
             debounceTime(500)
         ).subscribe({
             next: (resp) => {
-                this.http.post(this.backend + '/auth/login', resp).subscribe({
+                this.http.post(this.backend + '/post', resp).subscribe({
                     next: (req: any) => {
-                        if(req.hasOwnProperty('token')){
-                            this.router.navigateByUrl('/home/all-post');
-                            sessionStorage.setItem('TOKEN', req?.token)
+                        if(req.hasOwnProperty('id')){
+                            Swal.fire("Good job!", "Post created!", "success");
                         }else {
                             this.$message.next('Ocurrio un error intentando realizar la petición.');
+                            Swal.fire("Uppss", "try later!", "error");
                         }
                     },
                     error: (err) => {
@@ -41,15 +42,8 @@ export class SignInService {
     get messages() {
         return this.$message.asObservable();
     }
-    set signin(data: any) {
-        this.$signin.next(data);
+    set post(data: any) {
+        this.$post.next(data);
     }
 
-    get userSign() {
-        const token = sessionStorage.getItem('TOKEN');
-        if(token) {
-            return jwtDecode(token)
-        }
-        return {}
-    }
 }

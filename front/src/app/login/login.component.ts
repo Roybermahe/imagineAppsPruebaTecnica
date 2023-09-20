@@ -22,6 +22,6 @@ export class LoginComponent {
 
 
   sendSignIn() {
-    this.signInService.signup = this.form.value
+    this.signInService.signin = this.form.value
   }
 }

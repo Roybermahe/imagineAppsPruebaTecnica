@@ -1,0 +1,6 @@
+.content {
+    margin: auto;
+    display: block;
+    min-width: 80%;
+    max-width: 250px;
+}

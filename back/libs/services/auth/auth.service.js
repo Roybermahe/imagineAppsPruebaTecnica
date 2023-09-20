@@ -6,12 +6,14 @@ const authService = {
     verifyToken: async (req, res, next) => {
         const token = req.header('Authorization');
 
+        console.log(token);
         if (!token) {
             return res.sendStatus(401); // Unauthorized
         }
 
         jwt.verify(token, process.env.JWT_CONFIG, (err, payload) => {
             if (err) {
+                console.log(err);
                 return res.sendStatus(403);
             }
 
@@ -20,7 +22,7 @@ const authService = {
         });
     },
     sign: (payload) => {
-        return jwt.sign(payload, process.env.JWT_CONFIG, { expiresIn: '1h' })
+        return jwt.sign(payload, process.env.JWT_CONFIG, { expiresIn: '3h' })
     },
     login: async (username, password) => {
         const usuario = await db.manager.findOne(usuarios, {
