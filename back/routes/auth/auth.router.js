@@ -10,9 +10,8 @@ authRouter.post('/login', async (req, res) => {
             token: await authService.login(username, password) 
         })
     } catch (error) {
-        console.log(error);
         res.json({
-            error
+            error: error.message
         })
     }
 })

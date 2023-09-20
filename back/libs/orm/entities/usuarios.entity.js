@@ -20,6 +20,14 @@ const usuarios = new EntitySchema({
         password: {
             type: String,
             nullable: false
+        },
+        created_at: {
+            type: Date,
+            createDate: true,
+        },
+        update_at: {
+            type: Date,
+            updateDate: true,
         }
     }
 });

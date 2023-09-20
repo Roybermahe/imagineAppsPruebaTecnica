@@ -22,7 +22,7 @@ const usuarioService = {
     },
     update: async (id, data) => {
         await db.manager.update(usuarios, id, data);
-        return await getOne(id);
+        return await usuarioService.getOne(id);
     }
 }
 
