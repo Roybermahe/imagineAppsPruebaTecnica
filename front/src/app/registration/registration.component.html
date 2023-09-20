@@ -2,22 +2,30 @@
     <h1 class="text-center">Easy Media</h1>
     <h6 class="text-center" style="color: aqua;">Now, share is easy</h6>
     <h3 class="text-center">Sign Up</h3>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="form.valid && sendSignUp()">
         <label>Full Name</label><br>
-        <input class="inp" type="text" formControlName="nombres"/>
+        <input class="inp" type="text" formControlName="nombre"/><br>
         <hr>
+        
+        <small *ngIf="form.get('nombres')?.valid === false">Este campo es requerido.</small>
 <br>
         <label>Email</label><br>
         <input class="inp" type="email" formControlName="email" />
 <hr>
+
+<small *ngIf="form.get('email')?.valid === false">Ingrese un email valido.</small>
         <br>
         <label>Password</label><br>
         <input class="inp" type="password" formControlName="password"/>
         <hr>
+        
+        <small *ngIf="form.get('password')?.valid === false">Minimo debe tener 8 caracteres.</small>
 <br>
         <label>Confirm Password</label><br>
         <input class="inp" type="password" formControlName="confirmPass"/>
         <hr>
+        <small *ngIf="form.get('confirmPass')?.valid === false">Repite la contraseña</small>
+        <br>
         <br>
         <button class="btn-gradient">Sign Up</button>
         <br>
