@@ -1,0 +1,17 @@
+.card .container {
+    padding: 15px;
+}
+.card .container, .card .footer .fecha, .card .footer .user{
+    background-color: dimgray;
+}
+.card .footer {
+    background-color: dimgray;
+    padding: 7px !important;
+    border-radius: 0 0 15px 15px;
+}
+.card .header {
+    border-radius: 15px 15px 0 0;
+    background-color: aqua;
+    color: dimgray;
+    padding: 15px;
+}

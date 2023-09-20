@@ -48,8 +48,8 @@ export class SignInService {
     get userSign() {
         const token = sessionStorage.getItem('TOKEN');
         if(token) {
-            return jwtDecode(token)
+            return jwtDecode(token) || undefined
         }
-        return {}
+        return undefined
     }
 }

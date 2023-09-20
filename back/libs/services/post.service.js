@@ -8,9 +8,9 @@ const postService = {
         if(query.hasOwnProperty('date') || query.hasOwnProperty('title')) {
             if (query.hasOwnProperty('date') && query?.date !== '') {
                 const fechaInicio = new Date(query.date || '');
-                fechaInicio.setHours(0, 0, 0);
+                fechaInicio.setHours(1, 0, 0);
                 const fechaFin = new Date(query.date || '');
-                fechaFin.setHours(24, 0, 0);
+                fechaFin.setHours(25, 0, 0);
     
                 where.push({
                     created_at: Between(fechaInicio, fechaFin)
@@ -48,9 +48,9 @@ const postService = {
         }
         if(query.date !== '') {
             const fechaInicio = new Date(query.date || '');
-            fechaInicio.setHours(0, 0, 0);
+            fechaInicio.setHours(1, 0, 0);
             const fechaFin = new Date(query.date || '');
-            fechaFin.setHours(24, 0, 0);
+            fechaFin.setHours(25, 0, 0);
             where = {
                 created_at: Between(fechaInicio, fechaFin),
                 usuario: {

@@ -1,1 +1,38 @@
-<p>my-post works!</p>
+<div class="content">
+    <div class="content">
+        <h2 class="text-center" style="color: white;">My Publications</h2>
+        <br>
+        <form [formGroup]="form">
+        <label>Date</label><br>
+        <input class="inp" style="color: black;" formControlName="date" type="date" placeholder="Selecciona una fecha" >
+        <br>
+        <br>
+        </form>
+        <ng-container *ngIf="(mypost | async) as list">
+            <ng-container *ngIf="list.length === 0" [ngTemplateOutlet]="nodata"></ng-container>
+            <div class="card" style="margin-bottom: 15px;" *ngFor="let item of list">
+                <div class="header">
+                    {{ item.title }}
+                </div>
+                <div class="container" style="background: dimgray;">
+                    {{ item.message }}
+                </div>
+                <div style="display: flex;" class="footer">
+                    <div class="fecha" style="width: 50%; text-align: left;">
+                        {{ item.created_at | date: 'hh:mm a dd/MM/yyyy'}}
+                    </div>
+                    <div class="user" style="width: 50%; text-align: right;">
+                        {{ item.usuario.nombre}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <br>
+    </div>
+</div>
+
+<ng-template #nodata>
+   <h1>
+    <i style="font-size: 250px; color: black;" class="bx bx-confused"></i>
+   </h1>
+</ng-template>
