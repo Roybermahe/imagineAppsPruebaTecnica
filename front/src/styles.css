@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.inp {
+    width: 90%;
+    border: none;
+    padding: 5px;
+    color: white;
+}
+
+.inp:focus {
+    border: none;
+}
+
+* {
+    background-color: blueviolet;
+}
+
+.btn-gradient {
+    display: block;
+    margin: auto;
+    background: rgb(0, 212, 255);
+    background: linear-gradient(90deg, rgba(0, 212, 255, 1) 0%, rgba(190, 0, 157, 1) 100%);
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+    width: 70%;
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}

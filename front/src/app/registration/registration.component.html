@@ -1,0 +1,26 @@
+<div class="content">
+    <h1 class="text-center">Easy Media</h1>
+    <h6 class="text-center" style="color: aqua;">Now, share is easy</h6>
+    <h3 class="text-center">Sign Up</h3>
+    <form [formGroup]="form">
+        <label>Full Name</label><br>
+        <input class="inp" type="text" formControlName="nombres"/>
+        <hr>
+<br>
+        <label>Email</label><br>
+        <input class="inp" type="email" formControlName="email" />
+<hr>
+        <br>
+        <label>Password</label><br>
+        <input class="inp" type="password" formControlName="password"/>
+        <hr>
+<br>
+        <label>Confirm Password</label><br>
+        <input class="inp" type="password" formControlName="confirmPass"/>
+        <hr>
+        <br>
+        <button class="btn-gradient">Sign Up</button>
+        <br>
+        <p>Already have an account ? <a routerLink="/login">Login</a></p>
+    </form>
+</div>
